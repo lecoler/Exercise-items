@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        input{
+            margin-top: 20px;
+            outline: none;
+            border: 1px solid gray;
+            height: 20px;
+            width: 60px;
+            background: ghostwhite;
+            vertical-align: bottom;
+        }
+        .red{
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+<input type="text">
+<span><b>Vs</b></span>
+<input type="text">
+<button>获胜>></button>
+<span class="red">?</span>
+
+<script>
+    var inps = document.getElementsByTagName('input');
+    var btu = document.getElementsByTagName('button')[0];
+    var win = document.getElementsByClassName('red')[0];
+    var reg = /[^\d]/;
+    inps[0].onkeyup = function () {
+        this.value = this.value.replace(reg,"");
+    }
+    inps[1].onkeyup = function () {
+        this.value = this.value.replace(reg,"");
+    }
+    btu.onclick = function () {
+        (inps[0].value == "" || inps[1].value == "") ? alert("请输入正确格式"): 1;
+        win.innerHTML = Math.max(inps[0].value,inps[1].value);
+    }
+</script>
+</body>
+</html>

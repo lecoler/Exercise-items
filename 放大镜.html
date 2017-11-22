@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            display: inline-block;
+            border: 1px solid skyblue;
+            position: absolute;
+            padding: 5px;
+        }
+
+        #img {
+            width: 400px;
+        }
+
+        #show {
+            border: 1px solid black;
+            position: relative;
+            width: 250px;
+            height: 250px;
+            overflow: hidden;
+            left: 500px;
+            display: none;
+        }
+
+        #bigImg {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var img = document.getElementById('img');
+            var bigImg = document.getElementById('bigImg');
+            var show = document.getElementById('show');
+
+//            var imgWidth = img.offsetWidth;
+//            var imgHeight = img.offsetHeight;
+//
+//            var bigWidth = bigImg.offsetWidth;
+//            var bigHeight = bigImg.offsetHeight;
+
+
+            img.onmouseenter = function () {
+                show.style.display = 'inline-block';
+
+                var sacleX = bigImg.offsetWidth / img.offsetWidth;
+                var sacleY = bigImg.offsetHeight / img.offsetHeight;
+
+                var left = img.offsetLeft;
+                var top = img.offsetTop;
+
+                img.onmousemove = function (e) {
+                    var imgX = e.clientX - left;
+                    var imgY = e.clientY - top;
+
+                    var x = imgX*sacleX - show.offsetWidth/2;
+                    var y = imgY*sacleY - show.offsetHeight/2;
+
+//                    bigImg.style.left = -x + 'px';
+//                    bigImg.style.top = -y + 'px';
+
+                    show.scrollLeft = x;
+                    show.scrollTop = y;
+
+                    var X = e.clientX;
+                    var Y = e.clientY;
+                    show.style.left = X + 'px';
+                    show.style.top = Y + 'px';
+
+                }
+            }
+            img.onmouseleave = function () {
+                show.style.display = 'none';
+                img.onmousemove = null;
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+<div id="box">
+    <img src="images/timg.jpg" id='img'>
+</div>
+<div id="show">
+    <img src="images/timg.jpg" id='bigImg'>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .content {
+            width: 180px;
+            height: 180px;
+            background: black;
+            color: white;
+            font-size: 12px;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        .main {
+            text-align: center;
+        }
+
+        .box {
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var changeDIV = document.getElementsByClassName("content")[0];
+            var box = document.getElementsByClassName("box");
+            var inpText = box[0].getElementsByTagName("input");
+            var inpButton = box[1].getElementsByTagName("input");
+
+            function change(ele, nature, value) {
+                ele.style[nature] = value;
+            }
+
+            for (var i = 0; i < inpButton.length; i++) {
+                inpButton[i].setAttribute("index", i);
+                inpButton[i].onclick = function () {
+                    change(changeDIV, inpText[0].value, inpText[1].value);
+                    this.getAttribute("index") == inpButton.length - 1 && (changeDIV.style.cssText = "");
+                }
+            }
+
+        }
+    </script>
+</head>
+<body class=main>
+<div class="box">
+    属性名：<input type="text" value="background">
+    <br><br>
+    属性值：<input type="text" value="pink">
+</div>
+<div class="box">
+    <input type="button" value="确认">
+    <input type="button" value="重置">
+</div>
+<div class="content">
+    在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #box p{
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>ctrl+c 变黄</p>
+        <p>alt+r 重置</p>
+        <p>上下左右 移动</p>
+        <p>shift+上下左右 加速移动</p>
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+        window.onkeydown = function (evt) {
+            var evt = evt || window.event;
+            evt.ctrlKey && evt.key == 'c' && (box.style.background = 'yellow');
+            evt.altKey && evt.key == 'r' && (box.removeAttribute('style'));
+            evt.keyCode == '37' && (box.style.left = box.offsetLeft - 1 + 'px');
+            evt.keyCode == '38' && (box.style.top = box.offsetTop - 1 + 'px');
+            evt.keyCode == '39' && (box.style.left = box.offsetLeft + 1 + 'px');
+            evt.keyCode == '40' && (box.style.top = box.offsetTop + 1 + 'px');
+            if(evt.shiftKey){
+                evt.keyCode == '37' && (box.style.left = box.offsetLeft - 10 + 'px');
+                evt.keyCode == '38' && (box.style.top = box.offsetTop - 10 + 'px');
+                evt.keyCode == '39' && (box.style.left = box.offsetLeft + 10 + 'px');
+                evt.keyCode == '40' && (box.style.top = box.offsetTop + 10 + 'px');
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main {
+            text-align: center;
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            background: chocolate;
+            display: inline-block;
+            margin: 15px;
+            border: 1px dashed black;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];
+            var box = document.getElementsByClassName("box");
+            var arr = ["red", "darkred", "green", "yellow", "yellowgreen", "black", "pink", "hotpink", "blue", "white","lightblue","lightpink","orange","orangered","darkorange","#ccc","deeppink"]
+            var j = 0;
+            inp.onclick = function () {
+                    for (var i = 0; i < box.length; i++) {
+                        box[i].style.background = arr[j];
+                    }
+                    j++;
+                    j = j==arr.length ? 0 : j;
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="main">
+    <input type="button" value="onclick">
+    <br>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+</body>
+</html>

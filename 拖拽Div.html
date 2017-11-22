@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: black;
+            color: white;
+            cursor: all-scroll;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById('box');
+            box.style.left = localStorage.getItem('x');
+            box.style.top = localStorage.getItem('y');
+            box.onmousedown = function (e) {
+                var x = e.offsetX;
+                var y = e.offsetY;
+                document.onmousemove = function (evt) {
+                    box.style.left = evt.clientX - x + 'px';
+                    box.style.top = evt.clientY - y + 'px';
+                }
+            }
+            box.onmouseup = function () {
+                document.onmousemove = null;
+                localStorage.setItem('x',box.style.left);
+                localStorage.setItem('y',box.style.top);
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    This is Div.
+</div>
+</body>
+</html>

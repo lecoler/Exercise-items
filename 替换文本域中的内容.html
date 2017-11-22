@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id='text1'>
+<input type="button" id='btu' value='替换成'>
+<input type="text" id='text2'>
+<br>
+<br>
+<textarea rows=20 cols=50></textarea>
+
+<script>
+    var replaceWord = document.getElementById('text1');
+    var word = document.getElementById('text2');
+    var replace = document.getElementById('btu');
+    var textWord = document.getElementsByTagName('textarea')[0];
+
+    replace.onclick = function () {
+        var reg = new RegExp(replaceWord.value,'g');
+        textWord.value = textWord.value.replace(reg,word.value);
+    }
+
+
+
+
+</script>
+</body>
+</html>

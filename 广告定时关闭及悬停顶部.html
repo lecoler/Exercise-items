@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 10000px;
+        }
+
+        #adv {
+            width: 80%;
+            height: 100px;
+            position: absolute;
+            left: 10%;
+            top: 200px;
+            background: skyblue;
+            border: 1px solid blue;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        #adv span {
+            color: orangered;
+        }
+    </style>
+    <script>
+        onload = function () {
+            var adv = document.getElementById('adv');
+            var timer = setInterval(autoClose,1000);
+            function autoClose() {
+                adv.children[0].innerHTML--;
+                adv.children[0].innerHTML == 0 && (close(),clearInterval(timer));
+            }
+            onscroll = function () {
+                document.body.scrollTop >= 200 && (adv.style.position = 'fixed',adv.style.top = 0);
+                document.body.scrollTop < 200 && (adv.removeAttribute('style'));
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="adv">
+    这是一条广告，还有 <span>12</span> 秒自动关闭。
+</div>
+</body>
+</html>

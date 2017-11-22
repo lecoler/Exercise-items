@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #inp{
+            cursor: pointer;
+            background: #fcff69;
+            border: none;
+            outline: none;
+            width: 60px;
+            height: 30px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -15px;
+            margin-left: -30px;
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="inp" value="关灯">
+
+<script>
+    var inp = document.getElementById("inp");
+    inp.onclick = function () {
+        if(inp.value == "关灯"){
+            inp.parentNode.style.backgroundColor = "#000";
+            inp.value = "开灯";
+        }else {
+            inp.parentNode.style.backgroundColor = "#fff";
+            inp.value = "关灯";
+        }
+    }
+</script>
+</body>
+</html>

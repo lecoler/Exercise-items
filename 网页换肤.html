@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mian {
+            /*text-align: center;*/
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        .redColor, .greenColor, .blackColor {
+            width: 20px;
+            height: 20px;
+            border: 0;
+            cursor: pointer;
+            border: 4px solid transparent;
+        }
+
+        .redColor {
+            background: red;
+        }
+
+        .greenColor {
+            background: green;
+        }
+
+        .blackColor {
+            background: black;
+        }
+
+        .nav {
+            text-align: center;
+        }
+
+        .nav ul:after {
+            clear: both;
+            content: "";
+            visibility: hidden;
+        }
+
+        .nav li {
+            float: left;
+            list-style: none;
+            background: green;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid white;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        .redBackground {
+            background: pink;
+        }
+
+        .greenBackground {
+            background: lightgreen;
+        }
+
+        .blackBackground {
+            background: plum;
+        }
+
+        .onMousedown {
+            background: white;
+            border: 4px solid green;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var inps = document.getElementsByTagName("input");
+            var list = document.getElementsByTagName("li");
+            var mainBackround = document.getElementsByTagName("body")[0];
+            var arr = ["redColor", "greenColor", "blackColor", "redBackground", "greenBackground", "blackBackground"]
+            var arrColor = ["red", "green", "black"]
+            for (var i = 0; i < inps.length; i++) {
+                inps[i].setAttribute("index", i);
+                inps[i].onclick = function () {
+                    for (var j = 0; j < inps.length; j++) {
+                        inps[j].className = arr[j];
+                        inps[j].style.borderColor = arrColor[j];
+                    }
+                    this.setAttribute("class", "onMousedown");
+                    mainBackround.setAttribute("class", arr[+this.getAttribute("index") + 3]);
+                    for (var j = 0; j < list.length; j++) {
+                        list[j].style.backgroundColor = arrColor[this.getAttribute("index")];
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body class="greenBackground">
+<div class="mian">
+    <input type="button" class="redColor">
+    <input type="button" class="greenColor onMousedown">
+    <input type="button" class="blackColor">
+    <ul class=nav>
+        <li><a href="#">新闻</a></li>
+        <li><a href="#">娱乐</a></li>
+        <li><a href="#">体育</a></li>
+        <li><a href="#">电影</a></li>
+        <li><a href="#">音乐</a></li>
+        <li><a href="#">旅游</a></li>
+    </ul>
+</div>
+</body>
+</html>

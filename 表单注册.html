@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            background: skyblue;
+            border:  5px solid slateblue;
+            display: inline-block;
+            padding: 10px 10px 50px 10px;
+        }
+        .box input{
+            margin: 5px;
+        }
+        #obox{
+            display: none;
+            border-radius: 5px;
+            background: lightyellow;
+            padding: 5px;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<form class="box">
+    <h4>注册</h4>
+    用户名：<input type="text" id='user'>
+    <br>
+    &nbsp;&nbsp;&nbsp;密码：<input type="password" id='pwd'>
+    <br>
+    手机号：<input type="text" id='phone'>
+    <br>
+    <input type="button" id='btn' value='提交'>
+    <input type="reset">
+    <br>
+    <div id='obox'></div>
+</form>
+<script>
+    var useName = document.getElementById('user');
+    var pwdWord = document.getElementById('pwd');
+    var phoneNumber = document.getElementById('phone');
+    var box = document.getElementById('obox');
+    var submit = document.getElementById('btn');
+    var regName = /[0-9a-zA-Z]{6,}/;
+    var regPwd = /.{8,16}/;
+    var regPhone = /^1[3578]\d{9}/;
+    useName.onblur = function () {
+        if(!regName.test(useName.value)){
+            useName.style.background = 'red';
+            box.innerHTML = '用户名只能为字母，数字且长度不小于6位';
+            box.style.display = 'block';
+            return;
+        }else {
+            useName.removeAttribute('style');
+            box.style.display = 'none';
+        }
+    }
+    pwdWord.onblur = function () {
+        if(!regPwd.test(pwdWord.value)){
+            pwdWord.style.background = 'red';
+            box.innerHTML = '密码长度在8到16位';
+            box.style.display = 'block';
+            return;
+        }else {
+            pwdWord.removeAttribute('style');
+            box.style.display = 'none';
+        }
+    }
+    phoneNumber.onblur = function () {
+        if(!regPhone.test(phoneNumber.value)){
+            phoneNumber.style.background = 'red';
+            box.innerHTML = '手机号输入格式有误';
+            box.style.display = 'block';
+            return;
+        }else {
+            phoneNumber.removeAttribute('style');
+            box.style.display = 'none';
+        }
+    }
+    submit.onclick = function () {
+        if(regName.test(useName.value) && regPwd.test(pwdWord.value) && regPhone.test(phoneNumber.value)){
+            box.innerHTML = '注册成功' ;
+            box.style.display = 'block';
+            alert('user:'+useName.value+'\n pwd:'+pwdWord.value+'\n phone:'+phoneNumber.value);
+        }
+    }
+</script>
+</body>
+</html>

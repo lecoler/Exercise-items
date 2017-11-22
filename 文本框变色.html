@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            display: block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+
+<script>
+    var inps = document.getElementsByTagName("input");
+    for(var i in inps){
+        console.log(i);
+        inps[i].onfocus = function () {
+            this.style.backgroundColor = 'pink';
+        }
+        inps[i].onblur = function () {
+            this.removeAttribute('style');
+        }
+    }
+//
+
+</script>
+</body>
+</html>

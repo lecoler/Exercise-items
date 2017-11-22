@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #box {
+            background: black;
+            color: white;
+            display: inline-block;
+            padding: 20px 30px;
+            margin: 100px;
+        }
+
+        #box span {
+            padding: 5px;
+            background: white;
+            color: black;
+            border: 2px solid gainsboro;
+        }
+
+        .obox {
+            display: block;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <span>11</span>
+    时
+    <span>1</span>
+    分
+    <span>11</span>
+    秒
+</div>
+
+<script>
+    var box = document.getElementById('box');
+    var spans = box.children;
+    var span = document.createElement('span');
+    setInterval(function () {
+        var clock = new Date();
+        var hour = clock.getHours();
+        var minute = clock.getMinutes();
+        var second = clock.getSeconds();
+        hour < 10 && Number(hour = '0' + hour);
+        minute < 10 && Number(minute = '0' + minute);
+        second < 10 && Number(second = '0' + second);
+        spans[0].innerHTML = hour;
+        spans[1].innerHTML = minute;
+        spans[2].innerHTML = second;
+
+        span.className = 'obox';
+        span.innerHTML = Date.now();
+        document.body.appendChild(span);
+
+    }, 1)
+
+
+
+</script>
+</body>
+</html>

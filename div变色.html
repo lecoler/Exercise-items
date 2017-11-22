@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            font-size: 12px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+            transition: width 1s,height 1s,line-height 1s,font-size 1s;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    This is Div.
+</div>
+
+<script>
+    var box = document.getElementById('box');
+    var arrColor = ['red', 'orange', 'yellow', 'green', 'palegreen', 'blue', 'plum'];
+    var i = 1;
+    var p = true;
+    var time = 0;
+    var timer = setInterval(function () {
+        if(p){
+            box.style.background = arrColor[i];
+            box.style.width = 100 * i + 100 + 'px';
+            box.style.lineHeight = 100 + i + 'px';
+            box.style.height = 100 * i + 100 + 'px';
+            box.style.fontSize = 12 + i * 2  + 'px';
+            p = true;
+        }else {
+            box.style.background = arrColor[arrColor.length - i - 2];
+            box.style.width = 100 * (arrColor.length - i) - 100 + 'px';
+            box.style.lineHeight = 100 + i + 'px';
+            box.style.height = 100 * (arrColor.length - i) - 100 + 'px';
+            box.style.fontSize = 12 + (arrColor.length - i) * 2 + 'px';
+            p = false;
+            i == arrColor.length - 2  && (i = arrColor.length - 1);
+        }
+        box.style.background == 'red' && (p = true);
+        box.style.background == 'plum' && (p = false);
+        i++;
+        i == arrColor.length && (i = 1);
+        box.innerHTML = 'This is Div.<br\>'+ time;
+        time++;
+    }, 1000)
+
+
+    // 代码优化
+//    var box = document.getElementById('box');
+//    var arrColor = ['red', 'orange', 'yellow', 'green', 'palegreen', 'blue', 'plum'];
+//    var num = [100,200,300,400,500,600,700];
+//    var changeSize = 5;
+//    var i = 0;
+//    setInterval(function () {
+//        i++;
+//        box.style.backgroundColor = arrColor[i%7];
+//        box.style.fontSize || (box.style.fontSize = 12 + 'px');
+//        box.style.fontSize = parseInt(box.style.fontSize) + changeSize + 'px';
+//        i%7 == 0 && (changeSize *= -1);
+//        box.style.width = num[i%7] + 'px';
+//        box.style.height = num[i%7] + 'px';
+//
+//
+//    },1000)
+
+
+</script>
+</body>
+</html>

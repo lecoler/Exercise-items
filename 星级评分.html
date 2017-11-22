@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face {
+            font-family: 'iconfont';  /* project id 382802 */
+            src: url('//at.alicdn.com/t/font_382802_nk3x18mn8h93sor.eot');
+            src: url('//at.alicdn.com/t/font_382802_nk3x18mn8h93sor.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_382802_nk3x18mn8h93sor.woff') format('woff'),
+            url('//at.alicdn.com/t/font_382802_nk3x18mn8h93sor.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_382802_nk3x18mn8h93sor.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family: iconfont;
+            color: yellow;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id='inp' onfocus='delSpan()'>
+<button onclick='getRating()'>评分</button>
+<div id='box'></div>
+<script>
+    function getRating() {
+        var box = document.getElementById('box');
+        var inp = document.getElementById('inp');
+        var score = parseFloat(inp.value);
+        score = Math.floor(score * 2) / 2;
+        for(var i = 1; i <= score; i++){
+            var span = document.createElement('span');
+            span.className = 'iconfont';
+            span.innerHTML = '&#xe616;';
+            box.appendChild(span);
+        }
+        if(!(score*10%2 == 0)){
+            var span = document.createElement('span');
+            span.className = 'iconfont';
+            span.innerHTML = '&#xe615;';
+            box.appendChild(span);
+        }
+        var span = document.createElement('span');
+        span.innerHTML = score + '分';
+        span.style.display = 'block';
+        box.appendChild(span);
+    }
+    function delSpan() {
+        var box = document.getElementById('box');
+        var span = document.getElementsByTagName('span');
+        for(var i = span.length - 1; i >= 0; i--){
+            box.removeChild(span[i]);
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

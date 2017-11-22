@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main {
+            width: 100px;
+            margin: 10px auto;
+            background: #fafafa;
+            padding: 10px;
+            font-size: 12px;
+            line-height: 24px;
+            border: 1px solid #000;
+            border-radius: 8px;
+        }
+
+        span {
+            color: skyblue;
+        }
+
+        span:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <input type="checkbox"><b>全选 </b><span>反选</span><br>
+    <hr>
+    <input type="checkbox">选项（1）<br>
+    <input type="checkbox">选项（2）<br>
+    <input type="checkbox">选项（3）<br>
+    <input type="checkbox">选项（4）<br>
+    <input type="checkbox">选项（5）<br>
+    <input type="checkbox">选项（6）<br>
+    <input type="checkbox">选项（7）<br>
+    <input type="checkbox">选项（8）<br>
+    <input type="checkbox">选项（9）<br>
+    <input type="checkbox">选项（10）<br>
+    <input type="checkbox">选项（11）<br>
+</div>
+
+<script>
+    var main = document.getElementsByClassName('main')[0];
+    var all = main.firstElementChild;
+    var inps = main.getElementsByTagName('input');
+    all.onclick = function () {
+        for (var i = 1; i < inps.length; i++) {
+            inps[i].checked = all.checked;
+        }
+        all.nextSibling.innerHTML = all.checked == 1 ? '全不选' : '全选';
+    }
+    all.nextElementSibling.nextElementSibling.onclick = function () {
+        for (var i = 1; i < inps.length; i++) {
+            inps[i].checked = !inps[i].checked;
+        }
+        for(var k=1;k<inps.length;k++){
+            if (inps[k].checked == 0) {
+                all.checked = 0;
+                break;
+            } else {
+                all.checked = 1;
+            }
+        }
+            all.nextSibling.innerHTML = all.checked == 1 ? '全不选' : '全选';
+    }
+    for (var i = 1; i < inps.length; i++) {
+        inps[i].onclick = function () {
+            for (var j = 1; j < inps.length; j++) {
+                if (inps[j].checked == 0) {
+                    all.checked = 0;
+                    break;
+                } else {
+                    all.checked = 1;
+                }
+            }
+            all.nextSibling.innerHTML = all.checked == 1 ? '全不选' : '全选';
+        }
+    }
+
+</script>
+</body>
+</html>

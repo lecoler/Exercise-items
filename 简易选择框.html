@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            background: gray;
+            margin: 0 auto;
+            width: 200px;
+            height: 250px;
+            padding: 10px;
+        }
+        .box input{
+            width: 180px;
+            height: 20px;
+        }
+        .box ul{
+            list-style:none;
+            text-align: left;
+            width: 122px;
+            height: 0;
+            transition: height 2s;
+            overflow: hidden;
+        }
+        .box ul li{
+            width: 100px;
+            border-bottom: 1px dotted white;
+            border-left:1px solid white;
+            border-right:1px solid white;
+            background: black;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input type="text" id='select'  value='请选择游戏名称'>
+    <ul>
+        <li>英雄联盟</li>
+        <li>魔兽世界</li>
+        <li>大话西游</li>
+        <li>天龙八部</li>
+        <li>九阴真经</li>
+    </ul>
+</div>
+
+<script>
+    var box = document.getElementById('select');
+    var list = document.getElementsByTagName('li');
+    var lis = document.getElementsByTagName('ul')[0];
+
+    box.onmouseover = function () {
+        lis.style.height = '210px';
+        for(var i in list){
+            list[i].onmouseover = function () {
+                for(var i = 0; i < list.length; i++){
+                    list[i].style.background = 'black';
+                }
+                this.style.background = 'gray';
+                box.value = this.innerHTML;
+            }
+        }
+    }
+    lis.onmouseleave = function () {
+        lis.removeAttribute('style');
+    }
+
+
+
+</script>
+</body>
+</html>

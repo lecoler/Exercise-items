@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <input type="text" value="广州市">
+    <br>
+    <input type="text" value="海珠区">
+    <br>
+    <input type="button" value="传参" id="btu">
+</div>
+
+<script>
+    var inps = document.getElementsByTagName("input");
+    var btu = document.getElementById("btu");
+    btu.onclick = function () {
+        for(var i=0;i<inps.length-1;i++){
+            alert(inps[i].value);
+        }
+    }
+</script>
+
+</body>
+</html>

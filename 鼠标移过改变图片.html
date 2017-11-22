@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: black;
+        }
+        .box{
+            background: white;
+            width:260px;
+            height: 210px;
+            margin: 0 auto;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        .box ul{
+            list-style: none;
+        }
+        .box ul li{
+            float: left;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li><img src="images/big_1.jpg" height=154 width=154></li>
+        <li><img src="images/big_1.jpg" height=50 width=50></li>
+        <li><img src="images/big_2.jpg" height=50 width=50></li>
+        <li><img src="images/big_3.jpg" height=50 width=50></li>
+        <li><img src="images/big_4.jpg" height=50 width=50></li>
+        <li><img src="images/big_5.jpg" height=50 width=50></li>
+        <li><img src="images/big_6.jpg" height=50 width=50></li>
+        <li><img src="images/beauty1.jpg" height=50 width=50></li>
+        <li><img src="images/beauty2.jpg" height=50 width=50></li>
+        <li><img src="images/beauty3.jpg" height=50 width=50></li>
+        <li><img src="images/cat1.jpg" height=50 width=50></li>
+        <li><img src="images/cat2.jpg" height=50 width=50></li>
+    </ul>
+</div>
+
+<script>
+    var imgs = document.getElementsByTagName('img');
+    for(var i in imgs){
+        imgs[i].onmouseover = function () {
+            imgs[0].src = this.src;
+        }
+    }
+
+</script>
+</body>
+</html>

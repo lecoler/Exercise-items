@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            background: yellowgreen;
+            position: absolute;
+            left: 600px;
+            top: 100px;
+        }
+        input{
+            margin: 5px;
+        }
+    </style>
+    <script>
+        window.onload= function(){
+            var btu = document.getElementsByTagName("input");
+            var box = document.getElementsByClassName("box")[0];
+            for (var i = 0; i < btu.length; i++) {
+                btu[i].index = i;
+                btu[i].onclick = function () {
+                    var arr1 = ["width", "height", "background", "display", "display",'left','top','left','top'];
+                    var arr2 = ["200px", "200px", "pink", "none", "block",box.offsetLeft-10+'px',box.offsetTop-10+'px',box.offsetLeft+10+'px',box.offsetTop+10+'px'];
+                    function changeStyle(a, b, c) {
+                        a.style[b] = c;
+                    }
+                    this.index==4 && (box.style="");
+                    changeStyle(box, arr1[this.index], arr2[this.index]);
+                }
+            }
+        }
+
+
+
+    </script>
+</head>
+<body>
+<div>
+    <input type="button" value="变宽">
+    <input type="button" value="变高">
+    <input type="button" value="变色">
+    <input type="button" value="隐藏">
+    <input type="button" value="重置">
+    <br>
+    <input type="button" value="向左">
+    <input type="button" value="向上">
+    <input type="button" value="向右">
+    <input type="button" value="向下">
+</div>
+<br>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 30px;
+            line-height: 50px;
+            margin-top: -100px;
+            margin-left: -100px;
+            text-align: center;
+        }
+        #box span{
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id='box'>剩余<br><span></span><br> 秒</div>
+<script>
+    var box = document.getElementById('box');
+    var prm = prompt('请输入需倒计时的时间','60');
+    box.firstElementChild.nextSibling.innerHTML = +prm;
+    var timer = setInterval(function () {
+        var num = box.firstElementChild.nextSibling.innerHTML;
+        num--;
+        box.firstElementChild.nextSibling.innerHTML = num;
+        if(num <= 0){
+            clearInterval(timer);
+            box.innerHTML = '倒计时<br/>结束';
+        }
+    },1000)
+</script>
+</body>
+</html>

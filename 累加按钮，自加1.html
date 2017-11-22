@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点赞</title>
+    <style>
+        .main {
+            text-align: center;
+            padding: 10px;
+        }
+
+        @font-face {
+            font-family: 'iconfont';  /* project id 382802 */
+            src: url('//at.alicdn.com/t/font_382802_2snt22z9hznwb3xr.eot');
+            src: url('//at.alicdn.com/t/font_382802_2snt22z9hznwb3xr.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_382802_2snt22z9hznwb3xr.woff') format('woff'),
+            url('//at.alicdn.com/t/font_382802_2snt22z9hznwb3xr.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_382802_2snt22z9hznwb3xr.svg#iconfont') format('svg');
+        }
+
+        .iconfont {
+            font-family: iconfont;
+        }
+
+        .btu {
+            background: white;
+            border: 0;
+            outline: none;
+            color: #333333;
+        }
+
+        .redcolor {
+            color: orangered;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <label>
+        <i class="iconfont">&#xe60c;</i>
+        <input type="button" value="0" class="btu">
+        <small class="redcolor">+1</small>
+        <br>
+        <small>点赞</small>
+    </label>
+</div>
+<script>
+    var inp = document.getElementsByClassName("btu")[0];
+    var text = document.getElementsByClassName("redcolor")[0];
+    var i = document.getElementsByClassName("iconfont")[0];
+    inp.onclick = function () {
+        inp.value = +inp.value + 1;
+        text.style.display = "inline";
+        i.style.color = "red";
+        setTimeout("text.style.display = \"none\";i.removeAttribute(\"style\")", 300);
+        document.title = "点赞"+" "+"+"+inp.value;
+        inp.value%10 == 0 && (alert("点赞数达到"+inp.value+"\n"+"请继续努力！"));
+
+    }
+</script>
+</body>
+</html>

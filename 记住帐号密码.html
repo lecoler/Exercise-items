@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            margin: 10px;
+            padding: 10px;
+            background: skyblue;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        .box input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<form class="box">
+    帐号：<input type="text" id='user'>
+    <br>
+    密码：<input type="password" id='pwd'>
+    <br>
+    <input type="checkbox" id='select'>
+    <small>记住帐号密码</small>
+    <br>
+    <input type="button" value='确定' id='submit'>
+    <input type="reset" value='重置'>
+</form>
+
+
+<script>
+    var username = document.getElementById('user');
+    var pwdword = document.getElementById('pwd');
+    var selectBox = document.getElementById('select');
+    var sub = document.getElementById('submit');
+
+    getCookie('user') && (username.value = getCookie('user'));
+    getCookie('pwd') && (pwdword.value = getCookie('pwd'));
+
+    sub.onclick = function () {
+        if (username.value == '' || pwdword.value == '') {
+            alert('请输入完整');
+            return;
+        }
+        if (selectBox.checked) {
+            function setCookie(name, value, day) {
+                var exdate = new Date();
+                exdate.setDate(exdate.getDate() + day);
+                document.cookie = name + '=' + value + ';expires=' + exdate.toUTCString();
+            }
+
+            setCookie('user', username.value, 10);
+            setCookie('pwd', pwdword.value, 10);
+        }
+    }
+
+    function getCookie(name) {
+        var str = document.cookie;
+        str = str.split(';');
+        for (var i in str) {
+            str[i] = str[i].split('=');
+            if (str[i][0].trim() == name) {
+                return str[i][1];
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

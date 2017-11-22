@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+        }
+
+        .box{
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid red;
+        }
+
+        #nav {
+            list-style: none;
+        }
+
+        #nav li {
+            float: left;
+            background: black;
+            color: white;
+            padding: 10px 25px;
+            font-size: 14px;
+            position: relative;
+        }
+        .obox{
+            height: 0px;
+            background: black;
+            transition: height 3s;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+        .box li:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class='box'>
+    <ul id='nav'>
+        <li>首页
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>娱乐
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>新闻
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>游戏
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>视频
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>音乐
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>地图
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>体育
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>财经
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+        <li>福利
+            <ul class='obox'>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+    var nav = document.getElementById('nav');
+    var obox = document.getElementsByClassName('obox');
+    var lis = nav.children;
+    for(var i = 0; i < lis.length; i++){
+        lis[i].index = i;
+        lis[i].onmouseover = function () {
+            this.style.background = 'white';
+            this.style.color = 'black';
+            obox[this.index].style.height = '250px';
+        }
+        lis[i].onmouseout = function () {
+            this.removeAttribute('style');
+            obox[this.index].removeAttribute('style');
+        }
+    }
+
+
+</script>
+</body>
+</html>

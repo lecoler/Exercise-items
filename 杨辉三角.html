@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function y(n) {
+        var arr = [];
+        for(var i = 0; i < n; i++){
+            arr[i] = [];
+            for(var j = 0; j <= i; j++){
+                if(j == 0 || i == j){
+                    arr[i][j] = 1;
+                }else {
+                    arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
+                }
+                document.write(arr[i][j] + ' ');
+            }
+            document.write('<br/>');
+        }
+    }
+    y(10);
+</script>
+
+</body>
+</html>

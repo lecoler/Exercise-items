@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function quick(arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+        var left = [];
+        var right = [];
+        var middle = Math.floor(arr.length / 2);
+        var pro = arr.splice(middle, 1);
+        for (var i in arr) {
+            if (arr[i] > pro[0]) {
+                right.push(arr[i]);
+            } else {
+                left.push(arr[i]);
+            }
+        }
+        return quick(left).concat(pro,quick(right));
+    }
+
+    var arr1 = [1, 5, 3, 4, 2,8,9,6];
+    console.log(quick(arr1));
+</script>
+</body>
+</html>
