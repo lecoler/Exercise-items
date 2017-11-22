@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    for(var i = 1; i < 10; i++){
+        for(var j = 1; j <= i; j++){
+            var span = document.createElement('span');
+            span.innerHTML = j + '&times;' + i + '=' + i*j;
+            document.body.appendChild(span);
+            span.style.backgroundColor = 'pink';
+            span.style.margin = '8px';
+            span.style.padding = '8px';
+            span.style.display = 'inline-block';
+        }
+        document.write('<br/>');
+    }
+</script>
+</body>
+</html>
